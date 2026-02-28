@@ -1,4 +1,4 @@
-import random
+from schema import Greet
 
 from fastapi import FastAPI
 # basically how to import it!
@@ -12,10 +12,9 @@ def greetings():
     return {'hello': 'world'}
 
 @app.post('/post')
-def post():
-    var = random.randint(0,10)
-    arr.append(var)
-    return (var)
+def post(greet:Greet):
+    arr.append(greet.name)
+    return greet
 
 @app.get('/get')
 def getall():
